@@ -1,37 +1,85 @@
-.item{
-    width: 200px;
-    border:1px solid black;
-    border-radius: 20px;
+.item {
+    width: 100%; /* Lets the parent CSS Grid define the actual width */
+    background: white;
+    border-radius: 16px; /* Replaced the hard 20px corners */
+    overflow: hidden; /* Ensures the image doesn't break out of the rounded corners */
+    border: 1px solid var(--border-color, #e0e0e0); /* Replaced the 1px solid black */
+    transition: var(--transition, all 0.3s ease);
+}
 
+/* Remove default blue underline from the React Router Link */
+.item-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
 
-}
-.item p{
-    margin: 6px 10px;
-}
-.item img{
-    border-top-left-radius:20px ;
-    border-top-right-radius:20px ;
-    align-items: center;
-    justify-content: center ;
-    width: 200px;
-}
-.item-prices{
+.item-image-wrapper {
+    width: 100%;
+    aspect-ratio: 3/4; /* Keeps all product images uniformly proportioned */
+    overflow: hidden;
+    background: var(--light-bg, #f8f9fa);
     display: flex;
-    gap: 20px;
+    align-items: center;
+    justify-content: center;
 }
-.item-price-new{
-    color:#374151;
-    font-size: 16px;
-    font-weight: 600;
-    padding-left: 10px;
+
+.item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Prevents images from stretching weirdly */
+    transition: transform 0.5s ease;
 }
-.item-price-old{
-    color: #8c8c8c;
+
+.item-info {
+    padding: 20px 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.item-name {
+    margin: 0;
+    color: var(--grey, #5c5c5c);
     font-size: 16px;
+    font-weight: 500;
+    line-height: 1.4;
+    
+    /* Advanced CSS to cleanly truncate long product names to exactly 2 lines */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.item-prices {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Reduced from 20px for tighter grouping */
+}
+
+.item-price-new {
+    color: var(--dark, #1a1a1a); /* Replaced #374151 */
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.item-price-old {
+    color: #999; /* Softened from #8c8c8c */
+    font-size: 15px;
     font-weight: 500;
     text-decoration: line-through;
 }
-.item:hover{
-    transform: scale(1.1);
-    transition: 0.6s;
+
+/* Premium Hover State */
+.item:hover {
+    transform: translateY(-8px); /* Card floats up instead of scaling outward */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+    border-color: transparent; /* The shadow does the work, so we hide the border */
+}
+
+.item:hover img {
+    transform: scale(1.08); /* The image zooms inside the wrapper for a cool depth effect */
 }

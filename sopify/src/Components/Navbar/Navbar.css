@@ -1,73 +1,154 @@
-.navbar{
+.navbar {
     display: flex;
-    justify-content: space-around;
-    padding: 16px;
-    box-shadow:0 1px 3px -2px black ;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%; /* Replaces fixed padding and hardcoded space-around */
+    background-color: white;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+    
+    /* Makes the navbar stick to the top when scrolling */
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
-.nav-logo{
+
+.nav-logo {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 10px;
+    text-decoration: none; /* In case the logo is wrapped in a Link */
+    cursor: pointer;
 }
-.nav-logo p{
-    color:#171717;
+
+.nav-logo img {
+    height: 45px;
+}
+
+.nav-logo p {
+    color: var(--dark, #1a1a1a);
     font-size: 28px;
-    font-weight: 600;
+    font-weight: 700;
+    letter-spacing: -0.5px;
 }
-.nav-menu{
+
+/* Menu Navigation */
+.nav-menu {
     display: flex;
     align-items: center;
     list-style: none;
-    gap: 50px;
-    color: #626262;
-    font-size: 18px;
-    font-weight: 500;
+    gap: 40px;
 }
-.nav-menu li{
+
+.nav-menu li {
+    position: relative; /* Anchor for the active underline */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap:3px;
-    cursor: pointer;
 }
-.nav-menu hr{
-    border: none;
-    width: 80%;
-    height: 3px;
-    border-radius: 10px;
-    background: #ff4141;
-}
-.nav-login-cart{
-    display: flex;
-    align-items: center;
-    gap: 45px;
-}
-.nav-login-cart button{
-    width: 140px;
-    height: 40px;
-    outline: none;
-    border: 1px solid #7a7a7a;
-    border-radius: 75px;
-    color: #515151;
+
+.nav-menu a {
+    text-decoration: none;
+    color: var(--grey, #5c5c5c);
     font-size: 16px;
     font-weight: 500;
-    background:white;
+    transition: var(--transition, all 0.3s ease);
+}
+
+.nav-menu a:hover {
+    color: var(--primary, #ff4141);
+}
+
+/* Modern Animated Underline for Active Menu Items */
+.nav-menu li::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    border-radius: 10px;
+    background: var(--primary, #ff4141);
+    transition: width 0.3s ease;
+}
+
+.nav-menu li.active a {
+    color: var(--dark, #1a1a1a);
+    font-weight: 600;
+}
+
+.nav-menu li.active::after {
+    width: 80%; /* Only expands the underline when the class is active */
+}
+
+/* Login & Cart Section */
+.nav-login-cart {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.login-btn {
+    width: 120px;
+    height: 45px;
+    outline: none;
+    border: 1px solid var(--border-color, #e0e0e0);
+    border-radius: 50px;
+    color: var(--dark, #1a1a1a);
+    font-size: 16px;
+    font-weight: 500;
+    background: white;
+    cursor: pointer;
+    transition: var(--transition, all 0.3s ease);
+}
+
+.login-btn:hover {
+    background: var(--light-bg, #f8f9fa);
+    border-color: var(--dark, #1a1a1a);
+}
+
+.login-btn:active {
+    transform: scale(0.95);
+}
+
+/* Robust Cart Badge Positioning */
+.cart-icon-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
     cursor: pointer;
 }
-.nav-login-cart button:active{
-    background: #f3f3f3;
+
+.cart-icon-wrapper img {
+    height: 30px; /* Scaled down slightly for a cleaner look */
+    transition: transform 0.2s ease;
 }
-.nav-cart-count{
-width: 22px;
-height:22px;
-display: flex;
-justify-content: center;
-align-items: center;
-margin-top: -35px;
-margin-left: -55px;
-border-radius: 11px;
-font-size: 14px;
-background: red;
-color: white;
+
+.cart-icon-wrapper:hover img {
+    transform: scale(1.1);
+}
+
+.nav-cart-count {
+    position: absolute;
+    top: -8px;
+    right: -10px; /* This guarantees the badge sits perfectly on the corner */
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 600;
+    background: var(--primary, #ff4141);
+    color: white;
+    border: 2px solid white; /* Adds a nice cutout effect against the icon */
+}
+
+/* Basic Mobile Hide (To prevent layout breaking until a hamburger menu is added) */
+@media (max-width: 800px) {
+    .nav-menu {
+        display: none;
+    }
 }

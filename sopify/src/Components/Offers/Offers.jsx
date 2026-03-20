@@ -1,19 +1,25 @@
 import React from 'react'
 import "./Offers.css"
 import exclusive from "../../assets/exclu.webp"
+
 const Offers = () => {
   return (
-    <div className='offers'>
+    <section className='offers'>
+      <div className="offers-container">
+        
         <div className="offers-left">
-           <h1>Exclusive</h1>
-           <h1>Offers For You</h1>
+           <h2>Exclusive</h2>
+           <h2>Offers For You</h2>
            <p>ONLY ON BEST SELLERS PRODUCTS</p>
-           <button>Check Now</button>
+           <button className="offers-btn">Check Now</button>
         </div>
+        
         <div className="offers-right">
-<img src={exclusive} alt="" />
+            <img src={exclusive} alt="Exclusive Offer" className="offers-img" />
         </div>
-    </div>
+
+      </div>
+    </section>
   )
 }
 

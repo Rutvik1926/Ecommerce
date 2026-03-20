@@ -1,50 +1,113 @@
-.newsletter{
+.newsletter {
     width: 100%;
-    height: 50vh;
+    /* Fixed the missing linear-gradient syntax and softened the colors */
+    background: linear-gradient(180deg, #fdf4fdf0 0%, #f8f9fa 100%);
+    padding: 80px 20px; /* Replaces the restrictive 140px horizontal padding */
+    margin-bottom: 80px;
+}
+
+.newsletter-container {
+    max-width: 1280px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: auto;
-    padding: 0px 140px;
-    margin-bottom: 150px;
-    background: 180deg,#fde1ff 0%, #e1ffea22 60%;
-    gap: 30px;
+    text-align: center;
+    gap: 20px; /* Reduced from 30px for tighter grouping */
 }
  
-.newsletter h1{
-    color: #454545;
-    font-size: 55px;
-    font-weight: 600;
+.newsletter h2 {
+    color: var(--dark, #1a1a1a);
+    font-size: 48px; /* Slightly reduced from 55px for better balance */
+    font-weight: 700;
+    line-height: 1.2;
 }
-.newsletter p{
-    color: #454545;
-    font-size: 20px;
+
+.newsletter p {
+    color: var(--grey, #5c5c5c);
+    font-size: 18px; /* Slightly reduced from 20px */
+    margin-bottom: 20px;
 }
-.newsletter div{
+
+/* Form Styling */
+.newsletter-input-group {
     display: flex;
     align-items: center;
     justify-content: space-between;
     background: white;
-    width: 700px;
-    height: 50px;
-    border-radius: 80px;
-    border: 1px solid #e3e3e3;
+    width: 100%;
+    max-width: 600px; /* Replaces fixed 700px width */
+    height: 60px; /* Increased from 50px for a more premium feel */
+    border-radius: 50px; /* Pill shape */
+    border: 1px solid var(--border-color, #e0e0e0);
+    overflow: hidden; /* Ensures the input and button stay within the rounded corners */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.03); /* Subtle depth */
 }
-.newsletter input{
-    width: 500px;
-    margin-left: 30px;
+
+.newsletter-input-group input {
+    flex: 1; /* Takes up remaining space automatically */
+    height: 100%;
+    padding: 0 30px; /* Replaces margin-left */
     border: none;
     outline: none;
-    color: #616161;
+    color: var(--dark, #1a1a1a);
     font-size: 16px;
+    background: transparent;
 }
-.newsletter div button{
-    width: 200px;
-    height: 50px;
-    border-radius: 80px;
-    background: black;
+
+.newsletter-input-group input::placeholder {
+    color: #999;
+}
+
+.newsletter-input-group button {
+    width: 160px; /* Slightly reduced from 200px */
+    height: 100%;
+    border-radius: 50px;
+    background: var(--dark, #1a1a1a); /* Replaces raw black */
     color: white;
     font-size: 16px;
+    font-weight: 600;
+    border: none;
     cursor: pointer;
+    transition: var(--transition, all 0.3s ease);
+}
+
+.newsletter-input-group button:hover {
+    background: var(--primary, #ff4141); /* Uses theme color on hover */
+}
+
+.newsletter-input-group button:active {
+    transform: scale(0.98);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .newsletter h2 {
+        font-size: 32px;
+    }
+    
+    .newsletter-input-group {
+        flex-direction: column; /* Stacks input and button on small screens */
+        height: auto;
+        border-radius: 12px;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        gap: 15px;
+    }
+    
+    .newsletter-input-group input {
+        width: 100%;
+        height: 55px;
+        background: white;
+        border: 1px solid var(--border-color, #e0e0e0);
+        border-radius: 50px;
+        padding: 0 25px;
+    }
+    
+    .newsletter-input-group button {
+        width: 100%;
+        height: 55px;
+    }
 }

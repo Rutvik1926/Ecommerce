@@ -2,17 +2,22 @@ import React from 'react'
 import "./Popular.css"
 import Item from "../Item/Item"
 import data_product from '../../assets/data'
+
 const Popular = () => {
   return (
-    <div className='popular'>
-      <h1>POPULAR IN WOMEN</h1>
-      <hr/>
+    <section className='popular'>
+      <div className="popular-header">
+        <h2>POPULAR IN WOMEN</h2>
+        <hr className="header-line" />
+      </div>
+      
       <div className='popular-item'>
-        {data_product.map((item,i)=>{
-          return <Item key={i} id={item.id} name={item.name} image={item.image} new_price={item.new_price} old_price={item.old_price}/>
+        {data_product.map((item, i) => {
+          // Using the spread operator to automatically pass all properties
+          return <Item key={i} {...item} />
         })}
       </div>
-    </div>
+    </section>
   )
 }
 

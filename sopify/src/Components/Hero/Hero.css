@@ -1,49 +1,143 @@
-.hero{
-    height: 100vh;
-    background:linear-gradient(180deg,#47fdae,#e1ffea22 60%);
+/* Swapped the harsh green for a very soft, premium mint/white gradient */
+.hero {
+    width: 100%;
+    background: linear-gradient(180deg, #f0fffa 0%, #e1ffea22 100%);
     display: flex;
+    justify-content: center;
 }
-.hero-left{
-    flex:1;
+
+.hero-container {
+    max-width: 1280px;
+    width: 100%;
+    min-height: 85vh; /* Prevents it from being overly stretched on huge monitors */
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.hero-left {
+    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    gap: 15px; /* Replaced the massive margins with a clean gap */
+}
 
-    padding-left:80px ;
-    
-}
-.hero-left h2{
-    color: #090909;
-    font-size: 20px;
-    font-weight: 600;
-}
-.hero-left p{
-    color: #171717;
-    font-size: 60px;
+.hero-subtitle {
+    color: var(--dark, #1a1a1a);
+    font-size: 16px;
     font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
-.hero-hand-icon{
+
+/* Made the main text much larger and tighter for a modern look */
+.hero-title-wrap p {
+    color: var(--dark, #1a1a1a);
+    font-size: 80px; /* Increased from 60px */
+    font-weight: 800;
+    line-height: 1.1;
+    font-family: "Nunito Sans", sans-serif;
+}
+
+.hero-hand-icon {
     display: flex;
     align-items: center;
     gap: 20px;
 }
-.hero-latest-btn{
+
+.hero-hand-icon img {
+    width: 80px;
+    animation: wave 2.5s infinite; /* Added a fun waving animation */
+    transform-origin: 70% 70%;
+}
+
+.hero-latest-btn {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 4px;
-    width: 300px;
-    height: 50px;
-    border-radius: 75px;
+    gap: 15px;
+    width: 280px;
+    height: 60px;
+    border-radius: 50px;
     margin-top: 30px;
-    background: #ff4141;
+    background: var(--primary, #ff4141);
     color: white;
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(255, 65, 65, 0.2);
+    transition: var(--transition, all 0.3s ease);
 }
-.hero-right{
+
+.hero-latest-btn img {
+    height: 16px;
+    transition: transform 0.3s ease;
+}
+
+/* Premium button hover interactions */
+.hero-latest-btn:hover {
+    background: #e63939;
+    transform: translateY(-3px);
+    box-shadow: 0 15px 25px rgba(255, 65, 65, 0.3);
+}
+
+.hero-latest-btn:hover img {
+    transform: translateX(5px); /* Arrow slides right on hover */
+}
+
+.hero-right {
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+}
+
+.hero-img {
+    max-width: 100%;
+    height: auto;
+    max-height: 600px;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.1)); /* Adds depth to the model image */
+}
+
+/* Keyframes for the waving hand */
+@keyframes wave {
+    0% { transform: rotate(0deg); }
+    10% { transform: rotate(14deg); }
+    20% { transform: rotate(-8deg); }
+    30% { transform: rotate(14deg); }
+    40% { transform: rotate(-4deg); }
+    50% { transform: rotate(10deg); }
+    60% { transform: rotate(0deg); }
+    100% { transform: rotate(0deg); }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 1024px) {
+    .hero-title-wrap p { font-size: 60px; }
+    .hero-hand-icon img { width: 60px; }
+}
+
+@media (max-width: 768px) {
+    .hero-container {
+        flex-direction: column; /* Stacks image below text on phones */
+        text-align: center;
+        padding-top: 60px;
+    }
+    
+    .hero-left {
+        align-items: center; /* Centers the button and text */
+    }
+
+    .hero-title-wrap p { font-size: 45px; }
+    
+    .hero-hand-icon { justify-content: center; }
+    
+    .hero-img { 
+        max-height: 400px; 
+        margin-top: 40px; 
+    }
 }

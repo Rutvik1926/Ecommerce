@@ -1,26 +1,43 @@
-.newcollections{
+.newcollections {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
-margin-bottom: 100px;
-    
+    max-width: 1280px;
+    margin: 80px auto; /* Centers the section and adds vertical breathing room */
+    padding: 0 20px;
 }
-.newcollections h1{
-    color: #171717;
-    font-size:40px;
-    font-weight: 600;
 
+/* Header Styling */
+.newcollections-header {
+    text-align: center;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px; /* Creates spacing between the text and the line */
 }
-.newcollections hr{
-    width: 200px;
-    height: 6px;
+
+.newcollections-header h2 {
+    color: var(--dark, #1a1a1a);
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* Replaced the chunky block with a sleek, colorful accent line */
+.header-line {
+    width: 80px;
+    height: 4px;
     border-radius: 10px;
-    background: #252525;
+    background: var(--primary, #ff4141);
+    border: none;
 }
-.collections{
+
+/* The Grid */
+.collections {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    margin-top: 50px;
-    gap: 30px;
+    /* This single line makes the grid 100% responsive for all devices */
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 40px;
+    width: 100%;
 }

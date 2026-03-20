@@ -5,10 +5,10 @@ import App from './App.jsx'
 import ShopContextProvider from './Context/ShopContext.jsx'
 
 createRoot(document.getElementById('root')).render(
-  // <StrictMode>
-  <ShopContextProvider>
-  <App />
-  </ShopContextProvider>
-  
-  // </StrictMode>,
+  <StrictMode>
+    <ShopContextProvider>
+      <App />
+    </ShopContextProvider>
+
+  </StrictMode>
 )

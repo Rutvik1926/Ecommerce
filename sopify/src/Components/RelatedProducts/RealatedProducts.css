@@ -1,24 +1,43 @@
-.relatedproducts{
+.relatedproducts {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
-    height: 90vh;
+    max-width: 1280px;
+    margin: 80px auto; /* Matches the vertical rhythm of the rest of the site */
+    padding: 0 20px;
+}
 
-}
-.relatedproducts h1{
-    color: #171717;
-    font-size: 40px;
-    font-weight: 600;
-}
-.relatedproducts hr{
-    width: 200px;
-    height: 6px;
-    border-radius: 10px;
-    background: #252525;
-}
-.relatedproducts-item{
-    margin-top: 50px;
+/* Header Styling */
+.relatedproducts-header {
+    text-align: center;
+    margin-bottom: 50px;
     display: flex;
-    gap: 30px;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.relatedproducts-header h2 {
+    color: var(--dark, #1a1a1a);
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* Premium Accent Line */
+.header-line {
+    width: 80px;
+    height: 4px;
+    border-radius: 10px;
+    background: var(--primary, #ff4141);
+    border: none;
+}
+
+/* Smart Responsive Grid */
+.relatedproducts-item {
+    display: grid;
+    /* Automatically scales from 1 column on phones to 4 on desktop */
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 40px;
+    width: 100%;
 }

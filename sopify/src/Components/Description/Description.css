@@ -1,32 +1,92 @@
 .descriptionbox {
-    margin: 80px 50px;
- 
-
+    max-width: 1280px;
+    margin: 60px auto; /* Replaced fixed 50px side margins to match the responsive grid */
+    padding: 0 20px;
 }
 
-.descriptionbox-navigator{
+/* Modern Tab Navigation Layout */
+.descriptionbox-navigator {
     display: flex;
+    border-bottom: 2px solid var(--border-color, #e0e0e0);
+    margin-bottom: 30px;
+    gap: 10px;
 }
-.descriptionbox-nav-box{
+
+.descriptionbox-nav-box {
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 16px;
     font-weight: 600;
-    width: 150px;
-    height: 50px;
-    border: 1px solid #d0d0d0;
+    padding: 15px 30px;
+    color: var(--grey, #5c5c5c);
+    cursor: pointer;
+    transition: var(--transition, all 0.3s ease);
+    position: relative;
+    /* Removed the hard 150px width and boxy border from the original */
 }
-.descriptionbox-nav-box .fade{
-    background: #fbfbfb;
-    color: #555;
 
+.descriptionbox-nav-box:hover {
+    color: var(--dark, #1a1a1a);
+    background: var(--light-bg, #f8f9fa);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
 }
-.descriptionbox-description{
+
+/* Styling for the currently selected tab */
+.descriptionbox-nav-box.active {
+    color: var(--dark, #1a1a1a);
+}
+
+/* Sleek animated underline for the active tab */
+.descriptionbox-nav-box.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--dark, #1a1a1a);
+}
+
+/* Content Area Styling */
+.descriptionbox-content {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    border: 1px solid #D0D0D0;
-    padding: 40px;
-    padding-bottom: 50px;
+    color: var(--grey, #5c5c5c);
+    line-height: 1.8;
+}
+
+.descriptionbox-text p {
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+/* Review Placeholder Styling */
+.review-item {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color, #e0e0e0);
+}
+
+.review-author {
+    font-size: 14px;
+    margin-top: 5px;
+    color: #888;
+}
+
+/* Smooth transition when clicking between tabs */
+.fade-in {
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(10px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
 }
